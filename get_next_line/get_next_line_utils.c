@@ -1,5 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include "get_next_line.h"
 
 char	*ft_strjoin(char const *s1, char const *s2,int s1_len, int s2_len)
 {

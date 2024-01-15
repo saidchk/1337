@@ -1,6 +1,17 @@
 
 #include "get_next_line.h"
 
+
+char	*ft_concat(char *res, char *buffer, int *lenght, int i)
+{
+    buffer[i] = 0;
+	if (*lenght == 0)
+		res = ft_strjoin(buffer, "",i,*lenght);
+    else
+		res = ft_strjoin(res, buffer,*lenght,10239);
+	*lenght += i ;
+    return (res);
+}
 char	*get_next_line(int fd)
 {
     static char buffer[10240];
@@ -26,23 +37,13 @@ char	*get_next_line(int fd)
         }
         else 
         {
-            buffer[i] = 0;
-			if (lenght == 0)
-           		res = ft_strjoin(buffer, "",i,lenght);
-		   else
-		   {
-				printf("%s\n\n",res);
-		   		res = ft_strjoin(res, buffer,lenght,10239);
-		   }
-		   lenght += i ;
-			i = 0;
+            res = ft_concat(res, buffer, &lenght, i);
+            i = 0;
         }
     }
 	 buffer[i] = 0;
 		if(lenght >= 10239 )
-		{
 			res = ft_strjoin(res, buffer,lenght,i);
-		}
     return  (res);
 }
 /*
@@ -51,7 +52,8 @@ int main()
 
     int fd = open("test.txt",O_RDWR, 0777);
 	 
-		//ft_get_next_line(fd);
-    printf("%s",ft_get_next_line(fd));
-  //  printf("%s",ft_get_next_line(fd));
+	get_next_line(fd);
+    printf("%s",get_next_line(fd));
+	
+    printf("ll");
 }*/
