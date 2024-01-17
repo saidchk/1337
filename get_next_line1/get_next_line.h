@@ -1,7 +1,7 @@
 
 # ifndef get_next_line_h
 #define get_next_line_h
-# define BUFF_SIZE 6
+
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
